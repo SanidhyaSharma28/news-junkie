@@ -1,0 +1,58 @@
+{
+    "status": "ok",
+    "totalResults": 4,
+    "articles": [
+        {
+            "source": {
+                "id": "bbc-sport",
+                "name": "BBC Sport"
+            },
+            "author": null,
+            "title": "Major League Cricket 'wants England's best players'",
+            "description": "Major League Cricket wants to sign up England's best players for future editions of the tournament.",
+            "url": "http://www.bbc.co.uk/sport/cricket/66168710",
+            "urlToImage": "https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/13001/production/_130352877_stokesbairstow.jpg",
+            "publishedAt": "2023-07-11T17:22:22.4051819Z",
+            "content": "Major League Cricket players, founders and administrators rang the New York Stock Exchange closing bell to celebrate the launch of the US' new professional cricket league\r\nMajor League Cricket wants … [+3403 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-sport",
+                "name": "BBC Sport"
+            },
+            "author": null,
+            "title": "England prepare for Ashes 'great escape'",
+            "description": "England captain Heather Knight is hopeful England can pull off cricket's \"great escape\" by overturning Australia's six-point lead in the Ashes.",
+            "url": "http://www.bbc.co.uk/sport/cricket/66163187",
+            "urlToImage": "https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/59FB/production/_130353032_0edb80c191f758945b3a4e71f82c09829493c589.jpg",
+            "publishedAt": "2023-07-11T17:07:26.8431827Z",
+            "content": "<table><tr><th>Women's Ashes: England v Australia, First ODI</th></tr>\r\n<tr><td>Venue: Bristol Date: 12 July Time: 13:00 BST</td></tr><tr><td>Coverage: Ball-by-ball Test Match Special commentary on B… [+3450 chars]"
+        },
+        {
+            "source": {
+                "id": "espn-cric-info",
+                "name": "ESPN Cric Info"
+            },
+            "author": null,
+            "title": "PCB hands Umar Akmal three-year ban from all cricket | ESPNcricinfo.com",
+            "description": "Penalty after the batsman pleaded guilty to not reporting corrupt approaches | ESPNcricinfo.com",
+            "url": "http://www.espncricinfo.com/story/_/id/29103103/pcb-hands-umar-akmal-three-year-ban-all-cricket",
+            "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg",
+            "publishedAt": "2020-04-27T11:41:47Z",
+            "content": "Umar Akmal's troubled cricket career has hit its biggest roadblock yet, with the PCB handing him a ban from all representative cricket for three years after he pleaded guilty of failing to report det… [+1506 chars]"
+        },
+        {
+            "source": {
+                "id": "espn-cric-info",
+                "name": "ESPN Cric Info"
+            },
+            "author": null,
+            "title": "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
+            "description": "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
+            "url": "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
+            "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
+            "publishedAt": "2020-03-30T15:26:05Z",
+            "content": "Last week, we at ESPNcricinfo did something we have been thinking of doing for eight years now: pretend-live ball-by-ball commentary for a classic cricket match. We knew the result, yes, but we tried… [+6823 chars]"
+        }
+    ]
+}
