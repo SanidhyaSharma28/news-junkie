@@ -101,7 +101,7 @@ export class News extends Component {
         console.log("Render called");
         const { articles, loading } = this.state;
         const { category, mode } = this.props;
-
+    
         return (
             <>
                 <h1 className='text-center' style={{ margin: '10px 0px', marginTop: '60px', color: mode === 'dark' ? 'white' : 'black' }}>
@@ -109,14 +109,14 @@ export class News extends Component {
                 </h1>
                 {loading && <Spinner />}
                 <InfiniteScroll
-                    dataLength={articles.length}
+                    dataLength={articles ? articles.length : 0} // Ensure articles is defined
                     next={this.fetchMoreData}
-                    hasMore={articles.length !== this.state.totalResults}
+                    hasMore={articles && articles.length !== this.state.totalResults}
                     loader={<Spinner />}
                 >
                     <div className="container">
                         <div className="row" style={{ color: mode === 'dark' ? 'white' : 'black' }}>
-                            {articles.map((element, index) => {
+                            {articles && articles.map((element, index) => {
                                 console.log("Rendering article:", element);
                                 return (
                                     <div className="col-md-3" key={index}>
@@ -139,6 +139,7 @@ export class News extends Component {
             </>
         );
     }
+    
 }
 
 export default News;
