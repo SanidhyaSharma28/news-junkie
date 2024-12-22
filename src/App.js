@@ -44,15 +44,15 @@ const App=()=>{
           <LoadingBar color='#f11946' progress={progress} height={4} onLoaderFinished={() => setProgress(0)}/>
 
           <Routes>
-            <Route exact path="/" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="general" pagesize={8} country="in" category="general" />}></Route>
-            <Route exact path="/home" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery="" key="general" pagesize={8} country="in" category="general" />}></Route>
+            <Route exact path="/" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="general" pagesize={8}  category="general" />}></Route>
+            <Route exact path="/home" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery="" key="general" pagesize={8}  category="general" />}></Route>
             <Route exact path="/about" element={<AboutUs />}></Route>
-            <Route exact path="/business" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="business" pagesize={8} country="in" category="business" />}></Route>
-            <Route exact path="/entertainment" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="entertainment" pagesize={8} country="in" category="entertainment" />}></Route>
-            <Route exact path="/health" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="health" pagesize={8} country="in" category="health" />}></Route>
-            <Route exact path="/science" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="science" pagesize={8} country="in" category="science" />}></Route>
-            <Route exact path="/sports" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="sports" pagesize={8} country="in" category="sports" />}></Route>
-            <Route exact path="/technology" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="technology" pagesize={8} country="in" category="technology" />}></Route>
+            <Route exact path="/business" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="business" pagesize={8}  category="business" />}></Route>
+            <Route exact path="/entertainment" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="entertainment" pagesize={8}  category="entertainment" />}></Route>
+            <Route exact path="/health" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="health" pagesize={8}  category="health" />}></Route>
+            <Route exact path="/science" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="science" pagesize={8}  category="science" />}></Route>
+            <Route exact path="/sports" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="sports" pagesize={8}  category="sports" />}></Route>
+            <Route exact path="/technology" element={<News mode={mode} setProgress={setProgress} apikey={apikey} SearchQuery={SearchQuery} key="technology" pagesize={8}  category="technology" />}></Route>
           </Routes>
         </div>
       </Router>

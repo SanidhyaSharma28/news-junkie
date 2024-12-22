@@ -4,20 +4,14 @@ import Spinner from './Spinner';
 import PropTypes from 'prop-types'
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-
 export class News extends Component {
-
-
     static propTypes = {
         pagesize: PropTypes.number,
-        country: PropTypes.string,
         category: PropTypes.string
     }
 
-
     static defaultProps = {
         pagesize: 8,
-        country: "in",
         category: "general"
     }
 
@@ -31,84 +25,120 @@ export class News extends Component {
             articles: [],
             loading: false,
             page: 1,
-            totalResults:0
+            totalResults: 0
         }
-        document.title = `${this.capitalizeFirstLetter(this.props.category)}-News Junkie`
+        document.title = `${this.capitalizeFirstLetter(this.props.category)} - News Junkie`;
+        console.log("Component initialized with state:", this.state);
     }
-    async componentDidMount() {
-        await this.UpdateNews();
 
+    async componentDidMount() {
+        console.log("componentDidMount called");
+        await this.UpdateNews();
     }
 
     async componentDidUpdate(prevProps) {
-
+        console.log("componentDidUpdate called");
         if (prevProps.SearchQuery !== this.props.SearchQuery) {
+            console.log("SearchQuery prop changed:", this.props.SearchQuery);
             this.setState({
                 page: 1
-            })
-
+            });
             await this.UpdateNews();
         }
     }
 
-
     async UpdateNews() {
-        this.props.setProgress(3)
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apikey=${this.props.apikey}&page=${this.state.page}&pagesize=${this.props.pagesize}&q=${this.props.SearchQuery}`
-        this.setState({ loading: true })
-        this.props.setProgress(35)
-        let data = await fetch(url);
-        this.props.setProgress(50)
-        let parsedData = await data.json();
-        this.props.setProgress(80)
-        this.setState({
-            articles: parsedData.articles,
-            totalResults: parsedData.totalResults,
-            loading: false
-        });
-        this.props.setProgress(100)
+        console.log("UpdateNews called");
+        const {  category, apikey, pagesize, SearchQuery } = this.props;
+        const { page } = this.state;
+
+        const url = `https://newsapi.org/v2/top-headlines?category=${category}&apikey=${apikey}&page=${page}&pagesize=${pagesize}&q=${SearchQuery}`;
+        console.log("Fetching data from URL:", url);
+
+        this.setState({ loading: true });
+
+        try {
+            const data = await fetch(url);
+            const parsedData = await data.json();
+
+            console.log("Data fetched successfully:", parsedData);
+
+            this.setState({
+                articles: parsedData.articles,
+                totalResults: parsedData.totalResults,
+                loading: false
+            });
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     }
 
-    fetchMoreData=async()=>{
-        let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apikey=${this.props.apikey}&page=${this.state.page+1}&pagesize=${this.props.pagesize}&q=${this.props.SearchQuery}`
-        let data = await fetch(url);
-        let parsedData = await data.json();
-        this.setState({
-            articles: this.state.articles.concat(parsedData.articles),
-            totalResults: parsedData.totalResults,
-            loading: false,
-            page:this.state.page+1
-        });
+    fetchMoreData = async () => {
+        console.log("fetchMoreData called");
+        const {  category, apikey, pagesize, SearchQuery } = this.props;
+        const { page } = this.state;
+
+        const url = `https://newsapi.org/v2/top-headlines?category=${category}&apikey=${apikey}&page=${page + 1}&pagesize=${pagesize}&q=${SearchQuery}`;
+        console.log("Fetching more data from URL:", url);
+
+        try {
+            const data = await fetch(url);
+            const parsedData = await data.json();
+
+            console.log("More data fetched successfully:", parsedData);
+
+            this.setState({
+                articles: this.state.articles.concat(parsedData.articles),
+                totalResults: parsedData.totalResults,
+                page: page + 1
+            });
+        } catch (error) {
+            console.error("Error fetching more data:", error);
+        }
     }
-
-
-
-
 
     render() {
+        console.log("Render called");
+        const { articles, loading } = this.state;
+        const { category, mode } = this.props;
+
         return (
             <>
-                <h1 className='text-center ' style={{ margin: '10px 0px', marginTop:'60px',color:this.props.mode==='dark'?'white':'black' }}>News Junkie - Top {this.capitalizeFirstLetter(this.props.category)} headlines</h1>
-                {this.state.loading&& <Spinner/>}
+                <h1 className='text-center' style={{ margin: '10px 0px', marginTop: '60px', color: mode === 'dark' ? 'white' : 'black' }}>
+                    News Junkie - Top {this.capitalizeFirstLetter(category)} headlines
+                </h1>
+                {loading && <Spinner />}
                 <InfiniteScroll
-                    dataLength={this.state.articles.length}
+                    dataLength={articles.length}
                     next={this.fetchMoreData}
-                    hasMore={this.state.articles.length!==this.state.totalResults}
-                    loader={<Spinner/>}
+                    hasMore={articles.length !== this.state.totalResults}
+                    loader={<Spinner />}
                 >
                     <div className="container">
-                    <div className="row" style={{color:this.props.mode==='dark'?'white':'black'}}>
-                        { this.state.articles.map((element,index) => {
-                            return <div className="col-md-3 style={{color:this.props.mode==='dark'?'white':'black'}}" key={index}>
-                                <Newsitem mode={this.props.mode} title={element.title ? element.title.slice(0, 44) : ""} description={element.description ? element.description.slice(0, 88) : ""} imgUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
-                            </div>
-                        })}
-                    </div>
+                        <div className="row" style={{ color: mode === 'dark' ? 'white' : 'black' }}>
+                            {articles.map((element, index) => {
+                                console.log("Rendering article:", element);
+                                return (
+                                    <div className="col-md-3" key={index}>
+                                        <Newsitem
+                                            mode={mode}
+                                            title={element.title ? element.title.slice(0, 44) : ""}
+                                            description={element.description ? element.description.slice(0, 88) : ""}
+                                            imgUrl={element.urlToImage}
+                                            newsUrl={element.url}
+                                            author={element.author}
+                                            date={element.publishedAt}
+                                            source={element.source.name}
+                                        />
+                                    </div>
+                                );
+                            })}
+                        </div>
                     </div>
                 </InfiniteScroll>
             </>
-        )
+        );
     }
 }
 
-export default News
+export default News;
